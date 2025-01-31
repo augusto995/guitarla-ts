@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { db } from "../data/db"
+import type {CartItem} from '../types/index'
+
 
 //Ventajas de crear Hooks
 //Incorporar State y otros hooks a tu codigo para reutilizar en otro proyecto
@@ -7,7 +9,7 @@ import { db } from "../data/db"
 //Facil para testing
 export const useCart = () =>{
 
-    const initialCart = () => {
+    const initialCart = () : CartItem[] =>  {
         const localStorageCart = localStorage.getItem('cart')
         return localStorageCart ? JSON.parse(localStorageCart) : []
       }
