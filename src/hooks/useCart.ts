@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react"
 import { db } from "../data/db"
-import type {CartItem} from '../types/index'
+import type {Guitar, CartItem} from '../types/index'
 
 
 //Ventajas de crear Hooks
@@ -26,7 +26,7 @@ export const useCart = () =>{
       }, [cart])
     
     
-      function addToCart(item) {
+      function addToCart(item: Guitar) {
         //findIndex devuelve -1 si el elemnto no existe
         const itemExist = cart.findIndex(guitar => guitar.id === item.id )
         if(itemExist >= 0){ //Ya existe en el carrito
@@ -35,8 +35,9 @@ export const useCart = () =>{
           updatedCart[itemExist].quantity++
           setCart(updatedCart)
         } else{
-          item.quantity = 1
-          setCart([...cart, item])
+          //item.quantity = 1 Reemplaza 
+          const newItem : CartItem = {...item, quantity : 1}
+          setCart([...cart, newItem])
         }
     
       }
