@@ -5,6 +5,13 @@ export type Guitar = {
     description: string
     price: number
 }
+//Utility tipe
+//export type CartItem = Pick<Guitar,'id' | 'name'| 'price' > & {
+//    quantity: number
+//}
+//export type CartItem = Omit<Guitar,'id' | 'name'| 'price' > & {
+//    quantity: number
+//}
 
 export type CartItem = Guitar & {
     quantity: number
